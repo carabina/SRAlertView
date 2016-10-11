@@ -7,14 +7,14 @@
 //
 
 /**
- * If you have any question, please issue or contact me.
- * QQ: 396658379
- * Email: guowilling@qq.com
+ *  If you have any question, please issue or contact me.
+ *  QQ: 396658379
+ *  Email: guowilling@qq.com
  *
- * If you like it, please star it, thanks a lot.
- * Github: https://github.com/guowilling/SRAlertView
+ *  If you like it, please star it, thanks a lot.
+ *  Github: https://github.com/guowilling/SRAlertView
  *
- * Have Fun.
+ *  Have Fun.
  */
 
 #import <UIKit/UIKit.h>
@@ -38,31 +38,21 @@ typedef NS_ENUM(NSInteger, AlertViewAnimationStyle) {
 @protocol SRAlertViewDelegate <NSObject>
 
 @required
-/**
- *  Delegate's method
- *
- *  @param actionIndex     Left is 0, right is 1.
- */
-- (void)alertView:(SRAlertView *)alertView didClickBtnType:(AlertViewBtnType)btnType;
+- (void)alertViewDidClickBtn:(AlertViewBtnType)btnType;
 
 @end
 
-/**
- *  Block's call
- *
- *  @param index           The same to the delegate
- */
-typedef void(^AlertViewDidClickBtnBlock)(NSInteger btnIndex);
+typedef void(^AlertViewDidClickBtnBlock)(AlertViewBtnType btnType);
 
 @interface SRAlertView : UIView
 
 /**
- *  Button's background color when highlighted, default is [UIColor orangeColor].
+ Button's background color when highlighted, default is [UIColor orangeColor].
  */
 @property (nonatomic, strong) UIColor *buttonWhenHighlightedBackgroundColor;
 
 /**
- *  Button's title color when highlighted, default is [UIColor whiteColor].
+ Button's title color when highlighted, default is [UIColor whiteColor].
  */
 @property (nonatomic, strong) UIColor *buttonWhenHighlightedTitleColor;
 

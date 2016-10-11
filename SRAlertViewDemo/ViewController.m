@@ -99,8 +99,8 @@
                                       leftBtnTitle:@"Sure"
                                      rightBtnTitle:nil
                                     animationStyle:AlertViewAnimationNone
-                                     clickBtnBlock:^(NSInteger btnIndex) {
-                                         NSLog(@"%zd", btnIndex);
+                                     clickBtnBlock:^(AlertViewBtnType btnType) {
+                                         NSLog(@"%zd", btnType);
                                      }];
         }
             break;
@@ -111,8 +111,8 @@
                                       leftBtnTitle:@"Sure"
                                      rightBtnTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationZoom
-                                     clickBtnBlock:^(NSInteger btnIndex) {
-                                         NSLog(@"%zd", btnIndex);
+                                     clickBtnBlock:^(AlertViewBtnType btnType) {
+                                         NSLog(@"%zd", btnType);
                                      }];
         }
             break;
@@ -123,8 +123,8 @@
                                       leftBtnTitle:@"Sure"
                                      rightBtnTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationTopToCenterSpring
-                                     clickBtnBlock:^(NSInteger btnIndex) {
-                                         NSLog(@"%zd", btnIndex);
+                                     clickBtnBlock:^(AlertViewBtnType btnType) {
+                                         NSLog(@"%zd", btnType);
                                      }];
         }
             break;
@@ -161,7 +161,7 @@
     }
 }
 
-- (void)alertView:(SRAlertView *)alertView didClickBtnType:(AlertViewBtnType)btnType {
+- (void)alertViewDidClickBtn:(AlertViewBtnType)btnType {
     
     NSLog(@"%zd", btnType);
 }

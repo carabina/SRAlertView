@@ -264,8 +264,8 @@
     if (self.clickBtnBlock) {
         self.clickBtnBlock(btn.tag);
     }
-    if ([self.delegate respondsToSelector:@selector(alertView:didClickBtnType:)]) {
-        [self.delegate alertView:self didClickBtnType:btn.tag];
+    if ([self.delegate respondsToSelector:@selector(alertViewDidClickBtn:)]) {
+        [self.delegate alertViewDidClickBtn:btn.tag];
     }
     
     [self dismiss];
