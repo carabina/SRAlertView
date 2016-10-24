@@ -15,12 +15,12 @@
 #define COLOR_RANDOM                    COLOR_RGB(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
 #define kTitleLabelColor                [UIColor blackColor]
-#define kMessageLabelColor              [UIColor grayColor]
+#define kMessageLabelColor              [UIColor darkGrayColor]
 #define kLineBackgroundColor            [[UIColor orangeColor] colorWithAlphaComponent:0.2]
 
 #define kBtnNormalTitleColor            [UIColor darkGrayColor]
 #define kBtnHighlightedTitleColor       [UIColor whiteColor]
-#define kBtnHighlightedBackgroundColor  [UIColor orangeColor]
+#define kBtnHighlightedBackgroundColor  [[UIColor orangeColor] colorWithAlphaComponent:0.75]
 
 #define kAlertViewW             275.0f
 #define kAlertViewTitleH        20.0f
@@ -165,7 +165,7 @@
             _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, verticalMargin, kAlertViewW, kAlertViewTitleH)];
             _titleLabel.text          = _title;
             _titleLabel.textAlignment = NSTextAlignmentCenter;
-            _titleLabel.textColor     = [UIColor blackColor];
+            _titleLabel.textColor     = kTitleLabelColor;
             _titleLabel.font          = kTitleFont;
             _titleLabel;
         })];
@@ -175,7 +175,7 @@
     [_alertView addSubview:({
         _messageLabel = [[UILabel alloc] init];
         _messageLabel.backgroundColor = [UIColor whiteColor];
-        _messageLabel.textColor       = [UIColor lightGrayColor];
+        _messageLabel.textColor       = kMessageLabelColor;
         _messageLabel.font            = kMessageFont;
         _messageLabel.numberOfLines   = 0;
         _messageLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -277,7 +277,7 @@
     
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     
-    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.55 initialSpringVelocity:1.0
+    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          self.coverView.alpha = 1.0;
@@ -292,24 +292,18 @@
         case AlertViewAnimationZoom:
         {
             [self.alertView.layer setValue:@(0) forKeyPath:@"transform.scale"];
-            [UIView animateWithDuration:0.20 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                [self.alertView.layer setValue:@(1.1) forKeyPath:@"transform.scale"];
-            } completion:^(BOOL finished) {
-                [UIView animateWithDuration:0.15 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                    [self.alertView.layer setValue:@(0.9) forKeyPath:@"transform.scale"];
-                } completion:^(BOOL finished) {
-                    [UIView animateWithDuration:0.20 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                        [self.alertView.layer setValue:@(1.0) forKeyPath:@"transform.scale"];
-                    } completion:nil];
-                }];
-            }];
+            [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
+                                options:UIViewAnimationOptionCurveEaseIn
+                             animations:^{
+                                 [self.alertView.layer setValue:@(1.0) forKeyPath:@"transform.scale"];
+                             } completion:nil];
             break;
         }
         case AlertViewAnimationTopToCenterSpring:
         {
             CGPoint startPoint = CGPointMake(self.center.x, -self.alertView.frame.size.height);
             self.alertView.layer.position = startPoint;
-            [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.55 initialSpringVelocity:1.0
+            [UIView animateWithDuration:0.9 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
                                 options:UIViewAnimationOptionCurveEaseIn
                              animations:^{
                                  self.alertView.layer.position = self.center;
@@ -320,7 +314,7 @@
         {
             CGPoint startPoint = CGPointMake(self.center.x, SCREEN_HEIGHT);
             self.alertView.layer.position = startPoint;
-            [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.55 initialSpringVelocity:1.0
+            [UIView animateWithDuration:0.9 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
                                 options:UIViewAnimationOptionCurveEaseIn
                              animations:^{
                                  self.alertView.layer.position = self.center;
@@ -331,7 +325,7 @@
         {
             CGPoint startPoint = CGPointMake(-kAlertViewW, self.center.y);
             self.alertView.layer.position = startPoint;
-            [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.55 initialSpringVelocity:1.0
+            [UIView animateWithDuration:0.9 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
                                 options:UIViewAnimationOptionCurveEaseIn
                              animations:^{
                                  self.alertView.layer.position = self.center;
@@ -342,7 +336,7 @@
         {
             CGPoint startPoint = CGPointMake(SCREEN_WIDTH + kAlertViewW, self.center.y);
             self.alertView.layer.position = startPoint;
-            [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.55 initialSpringVelocity:1.0
+            [UIView animateWithDuration:0.9 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
                                 options:UIViewAnimationOptionCurveEaseIn
                              animations:^{
                                  self.alertView.layer.position = self.center;
@@ -355,7 +349,7 @@
 - (void)dismiss {
 
     [self.alertView removeFromSuperview];
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.9f initialSpringVelocity:0.7f
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          self.coverView.alpha = 0;
