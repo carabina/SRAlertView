@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68278CF21D64555300441E49 /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68278CF11D64555300441E49 /* SRAlertView.m */; };
+		683088E41E0249A500C43A65 /* coldplay.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 683088E31E0249A500C43A65 /* coldplay.jpg */; };
+		683088E81E02577D00C43A65 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 683088E71E02577D00C43A65 /* FXBlurView.m */; };
 		686A05801D57184B009CD2D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 686A057F1D57184B009CD2D9 /* main.m */; };
 		686A05831D57184B009CD2D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686A05821D57184B009CD2D9 /* AppDelegate.m */; };
 		686A05861D57184B009CD2D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686A05851D57184B009CD2D9 /* ViewController.m */; };
@@ -38,6 +40,10 @@
 /* Begin PBXFileReference section */
 		68278CF01D64555300441E49 /* SRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAlertView.h; sourceTree = "<group>"; };
 		68278CF11D64555300441E49 /* SRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertView.m; sourceTree = "<group>"; };
+		683088E31E0249A500C43A65 /* coldplay.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coldplay.jpg; sourceTree = "<group>"; };
+		683088E61E02577D00C43A65 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		683088E71E02577D00C43A65 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		683088EA1E02648600C43A65 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		686A057B1D57184B009CD2D9 /* SRAlertViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRAlertViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A057F1D57184B009CD2D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		686A05811D57184B009CD2D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -90,6 +96,23 @@
 			path = SRAlertView;
 			sourceTree = SOURCE_ROOT;
 		};
+		683088E51E02577D00C43A65 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				683088E61E02577D00C43A65 /* FXBlurView.h */,
+				683088E71E02577D00C43A65 /* FXBlurView.m */,
+			);
+			path = FXBlurView;
+			sourceTree = "<group>";
+		};
+		683088E91E02648600C43A65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				683088EA1E02648600C43A65 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		686A05721D57184B009CD2D9 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +121,7 @@
 				686A05971D57184C009CD2D9 /* SRAlertViewDemoTests */,
 				686A05A21D57184C009CD2D9 /* SRAlertViewDemoUITests */,
 				686A057C1D57184B009CD2D9 /* Products */,
+				683088E91E02648600C43A65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +154,8 @@
 		686A057E1D57184B009CD2D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				683088E51E02577D00C43A65 /* FXBlurView */,
+				683088E31E0249A500C43A65 /* coldplay.jpg */,
 				686A057F1D57184B009CD2D9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -220,7 +246,8 @@
 				TargetAttributes = {
 					686A057A1D57184B009CD2D9 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = N225EGMXAV;
+						DevelopmentTeam = Y4FK8UXDXW;
+						ProvisioningStyle = Manual;
 					};
 					686A05931D57184C009CD2D9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -259,6 +286,7 @@
 			files = (
 				686A058E1D57184B009CD2D9 /* LaunchScreen.storyboard in Resources */,
 				686A058B1D57184B009CD2D9 /* Assets.xcassets in Resources */,
+				683088E41E0249A500C43A65 /* coldplay.jpg in Resources */,
 				686A05891D57184B009CD2D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +314,7 @@
 			files = (
 				68278CF21D64555300441E49 /* SRAlertView.m in Sources */,
 				686A05861D57184B009CD2D9 /* ViewController.m in Sources */,
+				683088E81E02577D00C43A65 /* FXBlurView.m in Sources */,
 				686A05831D57184B009CD2D9 /* AppDelegate.m in Sources */,
 				686A05801D57184B009CD2D9 /* main.m in Sources */,
 			);
@@ -428,12 +457,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = N225EGMXAV;
+				DEVELOPMENT_TEAM = Y4FK8UXDXW;
 				INFOPLIST_FILE = SRAlertViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.willing.SRAlertViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b37cda96-8f5e-4e66-b454-438b5140edb4";
+				PROVISIONING_PROFILE_SPECIFIER = PPForAll;
 			};
 			name = Debug;
 		};
@@ -441,12 +472,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = N225EGMXAV;
+				DEVELOPMENT_TEAM = Y4FK8UXDXW;
 				INFOPLIST_FILE = SRAlertViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.willing.SRAlertViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b37cda96-8f5e-4e66-b454-438b5140edb4";
+				PROVISIONING_PROFILE_SPECIFIER = PPForAll;
 			};
 			name = Release;
 		};

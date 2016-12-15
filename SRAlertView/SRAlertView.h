@@ -21,9 +21,9 @@
 
 @class SRAlertView;
 
-typedef NS_ENUM(NSInteger, AlertViewBtnType) {
-    AlertViewBtnTypeLeft,
-    AlertViewBtnTypeRight,
+typedef NS_ENUM(NSInteger, AlertViewActionType) {
+    AlertViewActionTypeLT,
+    AlertViewActionTypeRT,
 };
 
 typedef NS_ENUM(NSInteger, AlertViewAnimationStyle) {
@@ -38,42 +38,61 @@ typedef NS_ENUM(NSInteger, AlertViewAnimationStyle) {
 @protocol SRAlertViewDelegate <NSObject>
 
 @required
-- (void)alertViewDidClickBtn:(AlertViewBtnType)btnType;
+- (void)alertViewDidSelectAction:(AlertViewActionType)actionType;
 
 @end
 
-typedef void(^AlertViewDidClickBtnBlock)(AlertViewBtnType btnType);
+typedef void(^AlertViewDidSelectAction)(AlertViewActionType actionType);
 
 @interface SRAlertView : UIView
 
 /**
- Button's background color when highlighted, default is [UIColor orangeColor].
+ The Animation style to show alert.
  */
-@property (nonatomic, strong) UIColor *buttonWhenHighlightedBackgroundColor;
+@property (nonatomic, assign) AlertViewAnimationStyle animationStyle;
 
 /**
- Button's title color when highlighted, default is [UIColor whiteColor].
+ Whether blur the current background view, default is YES.
+ */
+@property (nonatomic, assign) BOOL blurCurrentBackgroundView;
+
+/**
+ Button's title color when highlighted.
  */
 @property (nonatomic, strong) UIColor *buttonWhenHighlightedTitleColor;
 
+/**
+ Button's background color when highlighted.
+ */
+@property (nonatomic, strong) UIColor *buttonWhenHighlightedBackgroundColor;
+
 #pragma mark - BLOCK
 
+/**
+ Quickly show a alert view with block.
+ */
 + (void)sr_showAlertViewWithTitle:(NSString *)title
                           message:(NSString *)message
                      leftBtnTitle:(NSString *)leftBtnTitle
                     rightBtnTitle:(NSString *)rightBtnTitle
                    animationStyle:(AlertViewAnimationStyle)animationStyle
-                    clickBtnBlock:(AlertViewDidClickBtnBlock)clickBtnBlock;
+                     selectAction:(AlertViewDidSelectAction)selectAction;
 
+/**
+ Init a Alert view with block.
+ */
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
                  leftBtnTitle:(NSString *)leftBtnTitle
                 rightBtnTitle:(NSString *)rightBtnTitle
                animationStyle:(AlertViewAnimationStyle)animationStyle
-                clickBtnBlock:(AlertViewDidClickBtnBlock)clickBtnBlock;
+                 selectAction:(AlertViewDidSelectAction)selectAction;
 
 #pragma mark - DELEGATE
 
+/**
+ Quickly show a alert view with delegate.
+ */
 + (void)sr_showAlertViewWithTitle:(NSString *)title
                           message:(NSString *)message
                      leftBtnTitle:(NSString *)leftBtnTitle
@@ -81,6 +100,9 @@ typedef void(^AlertViewDidClickBtnBlock)(AlertViewBtnType btnType);
                    animationStyle:(AlertViewAnimationStyle)animationStyle
                          delegate:(id<SRAlertViewDelegate>)delegate;
 
+/**
+ Init a Alert view with delegate.
+ */
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
                  leftBtnTitle:(NSString *)leftBtnTitle
@@ -88,4 +110,6 @@ typedef void(^AlertViewDidClickBtnBlock)(AlertViewBtnType btnType);
                animationStyle:(AlertViewAnimationStyle)animationStyle
                      delegate:(id<SRAlertViewDelegate>)delegate;
 
+- (void)show;
+    
 @end

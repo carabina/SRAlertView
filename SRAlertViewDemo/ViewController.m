@@ -21,22 +21,20 @@
     
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     self.title = @"SRAlertView";
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _tableView.backgroundColor = [UIColor clearColor];
     _tableView.dataSource = self;
     _tableView.delegate   = self;
     [self.view addSubview:_tableView];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 6;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,33 +44,31 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"AnimationNone";
-                break;
-            case 1:
-                cell.textLabel.text = @"AnimationZoom";
-                break;
-            case 2:
-                cell.textLabel.text = @"AnimationTopToCenter";
-                break;
-            case 3:
-                cell.textLabel.text = @"AnimationDownToCenter";
-                break;
-            case 4:
-                cell.textLabel.text = @"AnimationLeftToCenter";
-                break;
-            case 5:
-                cell.textLabel.text = @"AnimationRightToCenter";
-                break;
-        }
-    } else {
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"SingleButton";
-                break;
-        }
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"AnimationNone";
+            break;
+        case 1:
+            cell.textLabel.text = @"AnimationZoom";
+            break;
+        case 2:
+            cell.textLabel.text = @"AnimationTopToCenter";
+            break;
+        case 3:
+            cell.textLabel.text = @"AnimationDownToCenter";
+            break;
+        case 4:
+            cell.textLabel.text = @"AnimationLeftToCenter";
+            break;
+        case 5:
+            cell.textLabel.text = @"AnimationRightToCenter";
+            break;
+        case 6:
+            cell.textLabel.text = @"LongMessage";
+            break;
+        case 7:
+            cell.textLabel.text = @"DontBlurBackgroundView";
+            break;
     }
     return cell;
 }
@@ -99,9 +95,9 @@
                                       leftBtnTitle:@"Sure"
                                      rightBtnTitle:nil
                                     animationStyle:AlertViewAnimationNone
-                                     clickBtnBlock:^(AlertViewBtnType btnType) {
-                                         NSLog(@"%zd", btnType);
-                                     }];
+                                      selectAction:^(AlertViewActionType actionType) {
+                                          NSLog(@"%zd", actionType);
+                                      }];
         }
             break;
         case 1:
@@ -111,9 +107,9 @@
                                       leftBtnTitle:@"Sure"
                                      rightBtnTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationZoom
-                                     clickBtnBlock:^(AlertViewBtnType btnType) {
-                                         NSLog(@"%zd", btnType);
-                                     }];
+                                      selectAction:^(AlertViewActionType actionType) {
+                                          NSLog(@"%zd", actionType);
+                                      }];
         }
             break;
         case 2:
@@ -123,9 +119,9 @@
                                       leftBtnTitle:@"Sure"
                                      rightBtnTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationTopToCenterSpring
-                                     clickBtnBlock:^(AlertViewBtnType btnType) {
-                                         NSLog(@"%zd", btnType);
-                                     }];
+                                      selectAction:^(AlertViewActionType actionType) {
+                                          NSLog(@"%zd", actionType);
+                                      }];
         }
             break;
         case 3:
@@ -158,12 +154,36 @@
                                           delegate:self];
         }
             break;
+        case 6:
+        {
+            [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
+                                           message:@"LongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessage"
+                                      leftBtnTitle:@"Sure"
+                                     rightBtnTitle:@"Cancel"
+                                    animationStyle:AlertViewAnimationZoom
+                                          delegate:self];
+        }
+            break;
+        case 7:
+        {
+            SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"SRAlertView"
+                                                                message:@"DontBlurBackgroundView"
+                                                           leftBtnTitle:@"Sure"
+                                                          rightBtnTitle:@"Cancel"
+                                                         animationStyle:AlertViewAnimationZoom
+                                                          selectAction:^(AlertViewActionType actionType) {
+                                                              NSLog(@"%zd", actionType);
+                                                          }];
+            alertView.blurCurrentBackgroundView = NO;
+            [alertView show];
+        }
+            break;
     }
 }
 
-- (void)alertViewDidClickBtn:(AlertViewBtnType)btnType {
+- (void)alertViewDidSelectAction:(AlertViewActionType)actionType {
     
-    NSLog(@"%zd", btnType);
+    NSLog(@"%zd", actionType);
 }
 
 @end
