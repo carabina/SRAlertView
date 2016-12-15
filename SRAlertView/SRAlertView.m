@@ -33,11 +33,13 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
 
 #pragma mark - Use Color
 
-#define kTitleLabelColor                [UIColor blackColor]
+#define kTitleLabelColor                UICOLOR_FROM_HEX_ALPHA(0x000000, 1.0)
 #define kMessageLabelColor              UICOLOR_FROM_HEX_ALPHA(0x313131, 1.0)
+
 #define kBtnNormalTitleColor            UICOLOR_FROM_HEX_ALPHA(0x4A4A4A, 1.0)
 #define kBtnHighlightedTitleColor       UICOLOR_FROM_HEX_ALPHA(0x4A4A4A, 1.0)
 #define kBtnHighlightedBackgroundColor  UICOLOR_FROM_HEX_ALPHA(0xF76B1E, 0.15)
+
 #define kLineBackgroundColor            [UIColor colorWithRed:1.00 green:0.92 blue:0.91 alpha:1.00]
 
 #pragma mark - Use Frame
@@ -60,17 +62,17 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
 @property (nonatomic, strong) UIView     *coverView;
 @property (nonatomic, strong) FXBlurView *blurView;
 
-@property (nonatomic, copy  ) NSString *title;
-@property (nonatomic, strong) UILabel  *titleLabel;
+@property (nonatomic, copy  ) NSString   *title;
+@property (nonatomic, strong) UILabel    *titleLabel;
 
-@property (nonatomic, copy  ) NSString *message;
-@property (nonatomic, strong) UILabel  *messageLabel;
+@property (nonatomic, copy  ) NSString   *message;
+@property (nonatomic, strong) UILabel    *messageLabel;
 
-@property (nonatomic, copy  ) NSString *leftBtnTitle;
-@property (nonatomic, strong) UIButton *leftBtn;
+@property (nonatomic, copy  ) NSString   *leftActionTitle;
+@property (nonatomic, strong) UIButton   *leftAction;
 
-@property (nonatomic, copy  ) NSString *rightBtnTitle;
-@property (nonatomic, strong) UIButton *rightBtn;
+@property (nonatomic, copy  ) NSString   *rightActionTitle;
+@property (nonatomic, strong) UIButton   *rightAction;
 
 @end
 
@@ -80,15 +82,15 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
 
 + (void)sr_showAlertViewWithTitle:(NSString *)title
                           message:(NSString *)message
-                     leftBtnTitle:(NSString *)leftBtnTitle
-                    rightBtnTitle:(NSString *)rightBtnTitle
+                  leftActionTitle:(NSString *)leftActionTitle
+                 rightActionTitle:(NSString *)rightActionTitle
                    animationStyle:(AlertViewAnimationStyle)animationStyle
-                     selectAction:(AlertViewDidSelectAction)selectAction
+                     selectAction:(AlertViewDidSelectAction)selectAction;
 {
     SRAlertView *alertView = [[self alloc] initWithTitle:title
                                                  message:message
-                                            leftBtnTitle:leftBtnTitle
-                                           rightBtnTitle:rightBtnTitle
+                                         leftActionTitle:leftActionTitle
+                                        rightActionTitle:rightActionTitle
                                           animationStyle:animationStyle
                                             selectAction:selectAction];
     [alertView show];
@@ -96,19 +98,19 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
 
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
-                 leftBtnTitle:(NSString *)leftBtnTitle
-                rightBtnTitle:(NSString *)rightBtnTitle
+              leftActionTitle:(NSString *)leftActionTitle
+             rightActionTitle:(NSString *)rightActionTitle
                animationStyle:(AlertViewAnimationStyle)animationStyle
                  selectAction:(AlertViewDidSelectAction)selectAction
 {
     if (self = [super initWithFrame:SCREEN_BOUNDS]) {
         _blurCurrentBackgroundView = YES;
-        _title          = title;
-        _message        = message;
-        _leftBtnTitle   = leftBtnTitle;
-        _rightBtnTitle  = rightBtnTitle;
-        _animationStyle = animationStyle;
-        _selectAction  = selectAction;
+        _title             = title;
+        _message           = message;
+        _leftActionTitle   = leftActionTitle;
+        _rightActionTitle  = rightActionTitle;
+        _animationStyle    = animationStyle;
+        _selectAction      = selectAction;
         [self setupAlertView];
     }
     return self;
@@ -118,15 +120,15 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
 
 + (void)sr_showAlertViewWithTitle:(NSString *)title
                           message:(NSString *)message
-                     leftBtnTitle:(NSString *)leftBtnTitle
-                    rightBtnTitle:(NSString *)rightBtnTitle
+                  leftActionTitle:(NSString *)leftActionTitle
+                 rightActionTitle:(NSString *)rightActionTitle
                    animationStyle:(AlertViewAnimationStyle)animationStyle
                          delegate:(id<SRAlertViewDelegate>)delegate
 {
     SRAlertView *alertView = [[self alloc] initWithTitle:title
                                                  message:message
-                                            leftBtnTitle:leftBtnTitle
-                                           rightBtnTitle:rightBtnTitle
+                                         leftActionTitle:leftActionTitle
+                                        rightActionTitle:rightActionTitle
                                           animationStyle:animationStyle
                                                 delegate:delegate];
     [alertView show];
@@ -134,19 +136,19 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
 
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
-                 leftBtnTitle:(NSString *)leftBtnTitle
-                rightBtnTitle:(NSString *)rightBtnTitle
+              leftActionTitle:(NSString *)leftActionTitle
+             rightActionTitle:(NSString *)rightActionTitle
                animationStyle:(AlertViewAnimationStyle)animationStyle
                      delegate:(id<SRAlertViewDelegate>)delegate
 {
     if (self = [super initWithFrame:SCREEN_BOUNDS]) {
         _blurCurrentBackgroundView = YES;
-        _title          = title;
-        _message        = message;
-        _leftBtnTitle   = leftBtnTitle;
-        _rightBtnTitle  = rightBtnTitle;
-        _animationStyle = animationStyle;
-        _delegate       = delegate;
+        _title             = title;
+        _message           = message;
+        _leftActionTitle   = leftActionTitle;
+        _rightActionTitle  = rightActionTitle;
+        _animationStyle    = animationStyle;
+        _delegate          = delegate;
         [self setupAlertView];
     }
     return self;
@@ -229,47 +231,47 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
     _alertView.center = self.center;
     
     CGFloat btnY = _alertView.frame.size.height - kAlertViewBtnH;
-    if (_leftBtnTitle) {
+    if (_leftActionTitle) {
         [_alertView addSubview:({
-            _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            _leftBtn.tag = AlertViewActionTypeLT;
-            _leftBtn.titleLabel.font = kBtnTitleFont;
-            [_leftBtn setTitle:_leftBtnTitle forState:UIControlStateNormal];
-            [_leftBtn setTitleColor:kBtnNormalTitleColor forState:UIControlStateNormal];
-            [_leftBtn setTitleColor:kBtnHighlightedTitleColor forState:UIControlStateHighlighted];
-            [_leftBtn setBackgroundImage:[self imageWithColor:kBtnHighlightedBackgroundColor] forState:UIControlStateHighlighted];
-            [_leftBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [_alertView addSubview:_leftBtn];
-            if (_rightBtnTitle) {
-                _leftBtn.frame = CGRectMake(0, btnY, kAlertViewW * 0.5, kAlertViewBtnH);
+            _leftAction = [UIButton buttonWithType:UIButtonTypeCustom];
+            _leftAction.tag = AlertViewActionTypeLeft;
+            _leftAction.titleLabel.font = kBtnTitleFont;
+            [_leftAction setTitle:_leftActionTitle forState:UIControlStateNormal];
+            [_leftAction setTitleColor:kBtnNormalTitleColor forState:UIControlStateNormal];
+            [_leftAction setTitleColor:kBtnHighlightedTitleColor forState:UIControlStateHighlighted];
+            [_leftAction setBackgroundImage:[self imageWithColor:kBtnHighlightedBackgroundColor] forState:UIControlStateHighlighted];
+            [_leftAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [_alertView addSubview:_leftAction];
+            if (_rightActionTitle) {
+                _leftAction.frame = CGRectMake(0, btnY, kAlertViewW * 0.5, kAlertViewBtnH);
             } else {
-                _leftBtn.frame = CGRectMake(0, btnY, kAlertViewW, kAlertViewBtnH);
+                _leftAction.frame = CGRectMake(0, btnY, kAlertViewW, kAlertViewBtnH);
             }
-            _leftBtn;
+            _leftAction;
         })];
     }
     
-    if (_rightBtnTitle) {
+    if (_rightActionTitle) {
         [_alertView addSubview:({
-            _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            _rightBtn.tag = AlertViewActionTypeRT;
-            _rightBtn.titleLabel.font = kBtnTitleFont;
-            [_rightBtn setTitle:_rightBtnTitle forState:UIControlStateNormal];
-            [_rightBtn setTitleColor:kBtnNormalTitleColor forState:UIControlStateNormal];
-            [_rightBtn setTitleColor:kBtnHighlightedTitleColor forState:UIControlStateHighlighted];
-            [_rightBtn setBackgroundImage:[self imageWithColor:kBtnHighlightedBackgroundColor] forState:UIControlStateHighlighted];
-            [_rightBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-            [_alertView addSubview:_rightBtn];
-            if (_leftBtnTitle) {
-                _rightBtn.frame = CGRectMake(kAlertViewW * 0.5, btnY, kAlertViewW * 0.5, kAlertViewBtnH);
+            _rightAction = [UIButton buttonWithType:UIButtonTypeCustom];
+            _rightAction.tag = AlertViewActionTypeRight;
+            _rightAction.titleLabel.font = kBtnTitleFont;
+            [_rightAction setTitle:_rightActionTitle forState:UIControlStateNormal];
+            [_rightAction setTitleColor:kBtnNormalTitleColor forState:UIControlStateNormal];
+            [_rightAction setTitleColor:kBtnHighlightedTitleColor forState:UIControlStateHighlighted];
+            [_rightAction setBackgroundImage:[self imageWithColor:kBtnHighlightedBackgroundColor] forState:UIControlStateHighlighted];
+            [_rightAction addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+            [_alertView addSubview:_rightAction];
+            if (_rightActionTitle) {
+                _rightAction.frame = CGRectMake(kAlertViewW * 0.5, btnY, kAlertViewW * 0.5, kAlertViewBtnH);
             } else {
-                _rightBtn.frame = CGRectMake(0, btnY, kAlertViewW, kAlertViewBtnH);
+                _rightAction.frame = CGRectMake(0, btnY, kAlertViewW, kAlertViewBtnH);
             }
-            _rightBtn;
+            _rightAction;
         })];
     }
     
-    if (_leftBtnTitle && _rightBtnTitle) {
+    if (_leftActionTitle && _rightActionTitle) {
         UIView *line1 = [[UIView alloc] init];
         line1.frame = CGRectMake(0, btnY, kAlertViewW, 1);
         line1.backgroundColor = kLineBackgroundColor;
@@ -436,26 +438,26 @@ blue:((float)(RGBValue & 0xFF))/255.0 alpha:1.0]
     _blurCurrentBackgroundView = blurCurrentBackgroundView;
 }
 
-- (void)setButtonWhenHighlightedTitleColor:(UIColor *)buttonWhenHighlightedTitleColor {
+- (void)setActionWhenHighlightedTitleColor:(UIColor *)actionWhenHighlightedTitleColor {
     
-    if (_buttonWhenHighlightedTitleColor == buttonWhenHighlightedTitleColor) {
+    if (_actionWhenHighlightedTitleColor == actionWhenHighlightedTitleColor) {
         return;
     }
-    _buttonWhenHighlightedTitleColor = buttonWhenHighlightedTitleColor;
+    _actionWhenHighlightedTitleColor = actionWhenHighlightedTitleColor;
     
-    [self.leftBtn  setTitleColor:buttonWhenHighlightedTitleColor forState:UIControlStateHighlighted];
-    [self.rightBtn setTitleColor:buttonWhenHighlightedTitleColor forState:UIControlStateHighlighted];
+    [self.leftAction  setTitleColor:actionWhenHighlightedTitleColor forState:UIControlStateHighlighted];
+    [self.rightAction setTitleColor:actionWhenHighlightedTitleColor forState:UIControlStateHighlighted];
 }
 
-- (void)setButtonWhenHighlightedBackgroundColor:(UIColor *)buttonWhenHighlightedBackgroundColor {
+- (void)setActionWhenHighlightedBackgroundColor:(UIColor *)actionWhenHighlightedBackgroundColor {
     
-    if (_buttonWhenHighlightedBackgroundColor == buttonWhenHighlightedBackgroundColor) {
+    if (_actionWhenHighlightedBackgroundColor == actionWhenHighlightedBackgroundColor) {
         return;
     }
-    _buttonWhenHighlightedBackgroundColor = buttonWhenHighlightedBackgroundColor;
+    _actionWhenHighlightedBackgroundColor = actionWhenHighlightedBackgroundColor;
     
-    [self.leftBtn  setBackgroundImage:[self imageWithColor:buttonWhenHighlightedBackgroundColor] forState:UIControlStateHighlighted];
-    [self.rightBtn setBackgroundImage:[self imageWithColor:buttonWhenHighlightedBackgroundColor] forState:UIControlStateHighlighted];
+    [self.leftAction  setBackgroundImage:[self imageWithColor:actionWhenHighlightedBackgroundColor] forState:UIControlStateHighlighted];
+    [self.rightAction setBackgroundImage:[self imageWithColor:actionWhenHighlightedBackgroundColor] forState:UIControlStateHighlighted];
 }
 
 @end

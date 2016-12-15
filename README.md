@@ -1,24 +1,32 @@
 # SRAlertView
 **A custom alert view which has animation while showing.**
 
-![image](./show.gif)
-![image](./show.png)
+<!--![image](./show.gif)-->
+
+![image](./show1.png)
+![image](./show2.png)
+
+![image](./show3.png)
+![image](./show4.png)
+
+* At least one, and at most two actions.
+* Bluring the current background view by default with FXBlurView.
+* According to the length of message automatically adjust the height of alert view.
 
 ### Usage
 
 ````objc
-// BLOCK
-// Only one button
-[SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"       
-									 message:@"SRAnimationNone"
-                          leftBtnTitle:@"Sure"
-                         rightBtnTitle:nil
+// Just one action
+[SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
+                               message:@"SRAnimationNone"
+                       leftActionTitle:@"Sure"
+                      rightActionTitle:nil
                         animationStyle:AlertViewAnimationNone
-                         clickBtnBlock:^(AlertViewBtnType btnType) {
-                             NSLog(@"%zd", btnType);
-                         }];
+                          selectAction:^(AlertViewActionType actionType) {
+                              NSLog(@"%zd", actionType);
+                          }];
 
-// Can have at most two button
+// Most two action
 [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                message:@"SRAnimationZoom"
                           leftBtnTitle:@"Sure"
@@ -27,40 +35,62 @@
                          clickBtnBlock:^(AlertViewBtnType btnType) {
                              NSLog(@"%zd", btnType);
                          }];
-````
 
-````objc
-// DELEGATE
+// Long message             
+NSString *message = @"LongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessage";
 [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
-                               message:@"SRAnimationDownToCenterSpring"
-                          leftBtnTitle:@"Sure"
-                         rightBtnTitle:@"Cancel"
-                        animationStyle:AlertViewAnimationDownToCenterSpring
+                               message:message
+                       leftActionTitle:@"Sure"
+                      rightActionTitle:@"Cancel"
+                        animationStyle:AlertViewAnimationZoom
                               delegate:self];
-                                      
-- (void)alertViewDidClickBtn:(AlertViewBtnType)btnType {
-    
-    NSLog(@"%zd", btnType);
+
+// Cancel bluring the current background view
+SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"SRAlertView"
+                                                    message:@"DontBlurBackgroundView"
+                                            leftActionTitle:@"Sure"
+                                           rightActionTitle:@"Cancel"
+                                             animationStyle:AlertViewAnimationZoom
+                                              delegate:self];
+alertView.blurCurrentBackgroundView = NO;
+[alertView show];
+
+// Delegate method
+- (void)alertViewDidSelectAction:(AlertViewActionType)actionType {
+- 
+    NSLog(@"%zd", actionType);
 }
+
 ````
 
 ## Custom Settings
 
 ````objc
 /**
- Button's background color when highlighted, default is [UIColor orangeColor].
+ The Animation style to show alert.
+ */
+@property (nonatomic, assign) AlertViewAnimationStyle animationStyle;
+
+/**
+ Whether blur the current background view, default is YES.
+ */
+@property (nonatomic, assign) BOOL blurCurrentBackgroundView;
+
+/**
+ Button's title color when highlighted.
+ */
+@property (nonatomic, strong) UIColor *buttonWhenHighlightedTitleColor;
+
+/**
+ Button's background color when highlighted.
  */
 @property (nonatomic, strong) UIColor *buttonWhenHighlightedBackgroundColor;
 
-/**
- Button's title color when highlighted, default is [UIColor whiteColor].
- */
-@property (nonatomic, strong) UIColor *buttonWhenHighlightedTitleColor;
 ````
 
 **If you have any question, please issue or contact me.**
 
-**If you like it, please star me, thanks a lot.**
+**If this repo helps you, please give me a star, thanks a lot.**
 
 **Have Fun.**
 

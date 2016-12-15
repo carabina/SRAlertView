@@ -92,8 +92,8 @@
         {
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:@"SRAnimationNone"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:nil
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:nil
                                     animationStyle:AlertViewAnimationNone
                                       selectAction:^(AlertViewActionType actionType) {
                                           NSLog(@"%zd", actionType);
@@ -104,8 +104,8 @@
         {
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:@"SRAnimationZoom"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:@"Cancel"
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationZoom
                                       selectAction:^(AlertViewActionType actionType) {
                                           NSLog(@"%zd", actionType);
@@ -116,8 +116,8 @@
         {
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:@"SRAnimationTopToCenterSpring"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:@"Cancel"
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationTopToCenterSpring
                                       selectAction:^(AlertViewActionType actionType) {
                                           NSLog(@"%zd", actionType);
@@ -128,8 +128,8 @@
         {
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:@"SRAnimationDownToCenterSpring"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:@"Cancel"
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationDownToCenterSpring
                                           delegate:self];
         }
@@ -138,8 +138,8 @@
         {
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:@"SRAnimationLeftToCenterSpring"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:@"Cancel"
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationLeftToCenterSpring
                                           delegate:self];
         }
@@ -148,18 +148,19 @@
         {
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:@"SRAnimationRightToCenterSpring"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:@"Cancel"
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationRightToCenterSpring
                                           delegate:self];
         }
             break;
         case 6:
         {
+            NSString *message = @"LongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessage";
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
-                                           message:@"LongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessage"
-                                      leftBtnTitle:@"Sure"
-                                     rightBtnTitle:@"Cancel"
+                                           message:message
+                                   leftActionTitle:@"Sure"
+                                  rightActionTitle:@"Cancel"
                                     animationStyle:AlertViewAnimationZoom
                                           delegate:self];
         }
@@ -168,12 +169,10 @@
         {
             SRAlertView *alertView = [[SRAlertView alloc] initWithTitle:@"SRAlertView"
                                                                 message:@"DontBlurBackgroundView"
-                                                           leftBtnTitle:@"Sure"
-                                                          rightBtnTitle:@"Cancel"
+                                                        leftActionTitle:@"Sure"
+                                                       rightActionTitle:@"Cancel"
                                                          animationStyle:AlertViewAnimationZoom
-                                                          selectAction:^(AlertViewActionType actionType) {
-                                                              NSLog(@"%zd", actionType);
-                                                          }];
+                                                          delegate:self];
             alertView.blurCurrentBackgroundView = NO;
             [alertView show];
         }

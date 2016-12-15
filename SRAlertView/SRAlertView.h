@@ -22,8 +22,8 @@
 @class SRAlertView;
 
 typedef NS_ENUM(NSInteger, AlertViewActionType) {
-    AlertViewActionTypeLT,
-    AlertViewActionTypeRT,
+    AlertViewActionTypeLeft,
+    AlertViewActionTypeRight,
 };
 
 typedef NS_ENUM(NSInteger, AlertViewAnimationStyle) {
@@ -57,14 +57,14 @@ typedef void(^AlertViewDidSelectAction)(AlertViewActionType actionType);
 @property (nonatomic, assign) BOOL blurCurrentBackgroundView;
 
 /**
- Button's title color when highlighted.
+ Action's title color when highlighted.
  */
-@property (nonatomic, strong) UIColor *buttonWhenHighlightedTitleColor;
+@property (nonatomic, strong) UIColor *actionWhenHighlightedTitleColor;
 
 /**
- Button's background color when highlighted.
+ Action's background color when highlighted.
  */
-@property (nonatomic, strong) UIColor *buttonWhenHighlightedBackgroundColor;
+@property (nonatomic, strong) UIColor *actionWhenHighlightedBackgroundColor;
 
 #pragma mark - BLOCK
 
@@ -73,8 +73,8 @@ typedef void(^AlertViewDidSelectAction)(AlertViewActionType actionType);
  */
 + (void)sr_showAlertViewWithTitle:(NSString *)title
                           message:(NSString *)message
-                     leftBtnTitle:(NSString *)leftBtnTitle
-                    rightBtnTitle:(NSString *)rightBtnTitle
+                  leftActionTitle:(NSString *)leftActionTitle
+                 rightActionTitle:(NSString *)rightActionTitle
                    animationStyle:(AlertViewAnimationStyle)animationStyle
                      selectAction:(AlertViewDidSelectAction)selectAction;
 
@@ -83,8 +83,8 @@ typedef void(^AlertViewDidSelectAction)(AlertViewActionType actionType);
  */
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
-                 leftBtnTitle:(NSString *)leftBtnTitle
-                rightBtnTitle:(NSString *)rightBtnTitle
+              leftActionTitle:(NSString *)leftActionTitle
+             rightActionTitle:(NSString *)rightActionTitle
                animationStyle:(AlertViewAnimationStyle)animationStyle
                  selectAction:(AlertViewDidSelectAction)selectAction;
 
@@ -95,8 +95,8 @@ typedef void(^AlertViewDidSelectAction)(AlertViewActionType actionType);
  */
 + (void)sr_showAlertViewWithTitle:(NSString *)title
                           message:(NSString *)message
-                     leftBtnTitle:(NSString *)leftBtnTitle
-                    rightBtnTitle:(NSString *)rightBtnTitle
+                  leftActionTitle:(NSString *)leftActionTitle
+                 rightActionTitle:(NSString *)rightActionTitle
                    animationStyle:(AlertViewAnimationStyle)animationStyle
                          delegate:(id<SRAlertViewDelegate>)delegate;
 
@@ -105,8 +105,8 @@ typedef void(^AlertViewDidSelectAction)(AlertViewActionType actionType);
  */
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message
-                 leftBtnTitle:(NSString *)leftBtnTitle
-                rightBtnTitle:(NSString *)rightBtnTitle
+              leftActionTitle:(NSString *)leftActionTitle
+             rightActionTitle:(NSString *)rightActionTitle
                animationStyle:(AlertViewAnimationStyle)animationStyle
                      delegate:(id<SRAlertViewDelegate>)delegate;
 
