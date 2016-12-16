@@ -1,20 +1,20 @@
 # SRAlertView
-**A custom alert view which has animation while showing.**
 
-<!--![image](./show.gif)-->
+### A custom alert view which has animation while showing.
 
+## Features
+* At least one, and at most two actions.
+* Bluring the current background view by default with FXBlurView.
+* According to the length of message automatically adjust the height of alert view.
+
+## Show pictures
 ![image](./show1.png)
 ![image](./show2.png)
 
 ![image](./show3.png)
 ![image](./show4.png)
 
-* At least one, and at most two actions.
-* Bluring the current background view by default with FXBlurView.
-* According to the length of message automatically adjust the height of alert view.
-
-### Usage
-
+## Usage
 ````objc
 // Just one action
 [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
@@ -60,11 +60,9 @@ alertView.blurCurrentBackgroundView = NO;
 - 
     NSLog(@"%zd", actionType);
 }
-
 ````
 
 ## Custom Settings
-
 ````objc
 /**
  The Animation style to show alert.
@@ -85,12 +83,8 @@ alertView.blurCurrentBackgroundView = NO;
  Button's background color when highlighted.
  */
 @property (nonatomic, strong) UIColor *buttonWhenHighlightedBackgroundColor;
-
 ````
 
-**If you have any question, please issue or contact me.**
-
-**If this repo helps you, please give me a star, thanks a lot.**
-
+**If you have any question, please issue or contact me.**   
+**If this repo helps you, please give it a star.**  
 **Have Fun.**
-
