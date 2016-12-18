@@ -8,10 +8,10 @@
 
 /**
  *  If you have any question, please issue or contact me.
- *  QQ: 396658379
+ *  QQ: 1990991510
  *  Email: guowilling@qq.com
  *
- *  If you like it, please star it, thanks a lot.
+ *  If this repo helps you, please give it a star, thanks a lot.
  *  Github: https://github.com/guowilling/SRAlertView
  *
  *  Have Fun.
