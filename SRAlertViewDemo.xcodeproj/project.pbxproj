@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681764A41E52B22A001A2E45 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681764A31E52B22A001A2E45 /* FXBlurView.m */; };
 		68278CF21D64555300441E49 /* SRAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68278CF11D64555300441E49 /* SRAlertView.m */; };
 		683088E41E0249A500C43A65 /* coldplay.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 683088E31E0249A500C43A65 /* coldplay.jpg */; };
-		683088E81E02577D00C43A65 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 683088E71E02577D00C43A65 /* FXBlurView.m */; };
 		686A05801D57184B009CD2D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 686A057F1D57184B009CD2D9 /* main.m */; };
 		686A05831D57184B009CD2D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686A05821D57184B009CD2D9 /* AppDelegate.m */; };
 		686A05861D57184B009CD2D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686A05851D57184B009CD2D9 /* ViewController.m */; };
@@ -38,11 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		681764A21E52B22A001A2E45 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		681764A31E52B22A001A2E45 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		68278CF01D64555300441E49 /* SRAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAlertView.h; sourceTree = "<group>"; };
 		68278CF11D64555300441E49 /* SRAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAlertView.m; sourceTree = "<group>"; };
 		683088E31E0249A500C43A65 /* coldplay.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coldplay.jpg; sourceTree = "<group>"; };
-		683088E61E02577D00C43A65 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		683088E71E02577D00C43A65 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		683088EA1E02648600C43A65 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		686A057B1D57184B009CD2D9 /* SRAlertViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRAlertViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A057F1D57184B009CD2D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,23 +87,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		681764A11E52B22A001A2E45 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				681764A21E52B22A001A2E45 /* FXBlurView.h */,
+				681764A31E52B22A001A2E45 /* FXBlurView.m */,
+			);
+			path = FXBlurView;
+			sourceTree = "<group>";
+		};
 		68278CEF1D64555300441E49 /* SRAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				681764A11E52B22A001A2E45 /* FXBlurView */,
 				68278CF01D64555300441E49 /* SRAlertView.h */,
 				68278CF11D64555300441E49 /* SRAlertView.m */,
 			);
 			path = SRAlertView;
 			sourceTree = SOURCE_ROOT;
-		};
-		683088E51E02577D00C43A65 /* FXBlurView */ = {
-			isa = PBXGroup;
-			children = (
-				683088E61E02577D00C43A65 /* FXBlurView.h */,
-				683088E71E02577D00C43A65 /* FXBlurView.m */,
-			);
-			path = FXBlurView;
-			sourceTree = "<group>";
 		};
 		683088E91E02648600C43A65 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -154,7 +155,6 @@
 		686A057E1D57184B009CD2D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				683088E51E02577D00C43A65 /* FXBlurView */,
 				683088E31E0249A500C43A65 /* coldplay.jpg */,
 				686A057F1D57184B009CD2D9 /* main.m */,
 			);
@@ -314,9 +314,9 @@
 			files = (
 				68278CF21D64555300441E49 /* SRAlertView.m in Sources */,
 				686A05861D57184B009CD2D9 /* ViewController.m in Sources */,
-				683088E81E02577D00C43A65 /* FXBlurView.m in Sources */,
 				686A05831D57184B009CD2D9 /* AppDelegate.m in Sources */,
 				686A05801D57184B009CD2D9 /* main.m in Sources */,
+				681764A41E52B22A001A2E45 /* FXBlurView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -156,7 +156,7 @@
             break;
         case 6:
         {
-            NSString *message = @"LongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessage";
+            NSString *message = @"LongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessageLongMessage";
             [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
                                            message:message
                                    leftActionTitle:@"Sure"
