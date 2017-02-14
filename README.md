@@ -1,20 +1,31 @@
 # SRAlertView
 
-### A custom alert view which has animation while showing.
-
 ## Features
+
 * At least one, and at most two actions.
 * Bluring the current background view by default with FXBlurView.
 * According to the length of message automatically adjust the height of alert view.
 
 ## Show pictures
+
 ![image](./show1.png)
 ![image](./show2.png)
+
+---
 
 ![image](./show3.png)
 ![image](./show4.png)
 
+## Installation
+
+### CocoaPods
+> Add **pod ‘SRAlertView’** to the Podfile, then run **pod install** in the terminal.
+
+### Manual
+> Drag the **SRAlertView** folder to the project.(Note: if the project has already import FXBlurView, you should remove it which in the SRAlertView folder)
+
 ## Usage
+
 ````objc
 // Just one action
 [SRAlertView sr_showAlertViewWithTitle:@"SRAlertView"
@@ -57,12 +68,13 @@ alertView.blurCurrentBackgroundView = NO;
 
 // Delegate method
 - (void)alertViewDidSelectAction:(AlertViewActionType)actionType {
-- 
+
     NSLog(@"%zd", actionType);
 }
 ````
 
 ## Custom Settings
+
 ````objc
 /**
  The Animation style to show alert.
